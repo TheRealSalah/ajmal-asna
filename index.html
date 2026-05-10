@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Ajmal & Asna | Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#ffffff;
+    overflow-x:hidden;
+    font-family:'Poppins',sans-serif;
+    color:#2b2b2b;
+}
+
+/* -------------------------------
+BACKGROUND
+--------------------------------*/
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top left,#f5e6b5 0%,transparent 20%),
+    radial-gradient(circle at bottom right,#f3d889 0%,transparent 20%),
+    linear-gradient(135deg,#ffffff,#fefbf3);
+    z-index:-5;
+}
+
+.floating-particles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-2;
+}
+
+.floating-particles span{
+    position:absolute;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:rgba(212,175,55,0.2);
+    animation:float 10s linear infinite;
+    bottom:-100px;
+}
+
+.floating-particles span:nth-child(1){
+    left:10%;
+    animation-duration:8s;
+}
+
+.floating-particles span:nth-child(2){
+    left:25%;
+    width:14px;
+    height:14px;
+    animation-duration:11s;
+}
+
+.floating-particles span:nth-child(3){
+    left:40%;
+    animation-duration:9s;
+}
+
+.floating-particles span:nth-child(4){
+    left:60%;
+    width:18px;
+    height:18px;
+    animation-duration:14s;
+}
+
+.floating-particles span:nth-child(5){
+    left:80%;
+    animation-duration:10s;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* -------------------------------
+INTRO SEAL
+--------------------------------*/
+
+.intro{
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(145deg,#fffef8,#fff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    transition:1.5s ease;
+}
+
+.envelope{
+    position:relative;
+    width:340px;
+    height:230px;
+    cursor:pointer;
+    perspective:1200px;
+}
+
+.envelope-body{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(145deg,#fff,#f7f2e7);
+    border:2px solid rgba(212,175,55,0.4);
+    border-radius:20px;
+    box-shadow:
+    0 20px 50px rgba(0,0,0,0.1),
+    inset 0 0 20px rgba(255,255,255,0.8);
+    overflow:hidden;
+}
+
+.flap{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(145deg,#fffdf7,#f4ebd3);
+    clip-path:polygon(0 0,100% 0,50% 60%);
+    transform-origin:top;
+    transition:1.8s cubic-bezier(.77,0,.175,1);
+    z-index:4;
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+}
+
+.seal{
+    position:absolute;
+    top:48%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:
+    radial-gradient(circle,#f8e6a5,#d4af37);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:5;
+    box-shadow:
+    0 10px 30px rgba(212,175,55,0.5);
+    transition:1s ease;
+}
+
+.seal::before{
+    content:'✦';
+    color:white;
+    font-size:30px;
+}
+
+.tap-text{
+    position:absolute;
+    bottom:-45px;
+    width:100%;
+    text-align:center;
+    color:#c6a547;
+    font-size:14px;
+    letter-spacing:3px;
+    animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        opacity:0.5;
+    }
+    50%{
+        opacity:1;
+    }
+}
+
+.open .flap{
+    transform:rotateX(180deg);
+}
+
+.open .seal{
+    transform:translate(-50%,-200px) scale(0);
+    opacity:0;
+}
+
+/* -------------------------------
+MAIN CONTENT
+--------------------------------*/
+
+.main{
+    opacity:0;
+    transform:translateY(50px);
+    transition:2s ease;
+    padding-bottom: 50px;
+}
+
+.main.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+    position:relative;
+}
+
+.arabic{
+    font-family:'Noto Naskh Arabic', serif;
+    font-size:28px;
+    color:#c9a43d;
+    margin-bottom:25px;
+}
+
+.invite{
+    letter-spacing:6px;
+    font-size:13px;
+    color:#777;
+    margin-bottom:18px;
+}
+
+.names{
+    font-family:'Cinzel',serif;
+    font-size:62px;
+    line-height:1.2;
+    color:#b8902d;
+    text-shadow:0 5px 20px rgba(212,175,55,0.15);
+}
+
+.and{
+    font-size:25px;
+    margin:10px 0;
+    color:#777;
+}
+
+.date{
+    margin-top:40px;
+    font-size:18px;
+    letter-spacing:3px;
+    color:#444;
+}
+
+.countdown{
+    display:flex;
+    gap:15px;
+    margin-top:45px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.time-box{
+    width:90px;
+    height:90px;
+    border-radius:24px;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(212,175,55,0.25);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+.time-box h2{
+    font-size:28px;
+    color:#c6a547;
+}
+
+.time-box p{
+    font-size:11px;
+    letter-spacing:2px;
+    color:#777;
+}
+
+/* -------------------------------
+DETAILS
+--------------------------------*/
+
+.section{
+    padding:40px 20px;
+}
+
+.card{
+    max-width:700px;
+    margin:auto;
+    background:rgba(255,255,255,0.7);
+    border:1px solid rgba(212,175,55,0.25);
+    border-radius:35px;
+    padding:45px 30px;
+    backdrop-filter:blur(15px);
+    box-shadow:0 20px 50px rgba(0,0,0,0.06);
+    text-align:center;
+}
+
+.section-title{
+    font-family:'Cinzel',serif;
+    font-size:34px;
+    margin-bottom:25px;
+    color:#c39a2d;
+}
+
+.detail-text{
+    line-height:2;
+    font-size:17px;
+    color:#444;
+}
+
+.location-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:15px 32px;
+    border-radius:50px;
+    text-decoration:none;
+    background:linear-gradient(135deg,#e4c15a,#c79d2f);
+    color:white;
+    letter-spacing:2px;
+    font-size:13px;
+    transition:0.4s ease;
+    box-shadow:0 10px 25px rgba(212,175,55,0.3);
+}
+
+.location-btn:hover{
+    transform:translateY(-5px);
+}
+
+/* -------------------------------
+MOBILE
+--------------------------------*/
+
+@media(max-width:768px){
+
+    .names{
+        font-size:46px;
+    }
+
+    .arabic{
+        font-size:24px;
+    }
+
+    .section-title{
+        font-size:28px;
+    }
+
+    .card{
+        padding:40px 22px;
+    }
+
+    .time-box{
+        width:75px;
+        height:75px;
+    }
+
+    .time-box h2{
+        font-size:22px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="floating-particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="intro" id="intro">
+
+    <div class="envelope" onclick="openInvitation()">
+
+        <div class="envelope-body"></div>
+
+        <div class="flap"></div>
+
+        <div class="seal"></div>
+
+        <div class="tap-text">
+            TAP TO OPEN
+        </div>
+
+    </div>
+
+</div>
+
+<div class="main" id="mainContent">
+
+    <section class="hero">
+
+        <div class="arabic">
+            السلام عليكم ورحمة الله وبركاته
+        </div>
+
+        <div class="invite">
+            WEDDING INVITATION
+        </div>
+
+        <div class="names">
+            AJMAL
+        </div>
+
+        <div class="and">
+            &
+        </div>
+
+        <div class="names">
+            ASNA
+        </div>
+
+        <div class="date">
+            JUNE 7 • SUNDAY
+        </div>
+
+        <div class="countdown">
+
+            <div class="time-box">
+                <h2 id="days">00</h2>
+                <p>DAYS</p>
+            </div>
+
+            <div class="time-box">
+                <h2 id="hours">00</h2>
+                <p>HOURS</p>
+            </div>
+
+            <div class="time-box">
+                <h2 id="minutes">00</h2>
+                <p>MINUTES</p>
+            </div>
+
+            <div class="time-box">
+                <h2 id="seconds">00</h2>
+                <p>SECONDS</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="card">
+
+            <div class="section-title">
+                Wedding Ceremony
+            </div>
+
+            <div class="detail-text">
+                With the blessings of Allah,<br>
+                we cordially invite you to join us<br>
+                in celebrating the wedding of<br><br>
+
+                <strong>Ajmal & Asna</strong><br><br>
+
+                on Sunday, June 7<br>
+                at<br>
+                Grace Convention Center,<br>
+                Nellaya
+            </div>
+
+            <div style="margin: 25px 0; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(212,175,55,0.2); position: relative; height: 250px; background: #e5e3df;">
+                <iframe style="position: absolute; top: -65px; left: -20px; width: calc(100% + 40px); height: calc(100% + 130px); border: none; pointer-events: none;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Grace+Convention+Center,+Nellaya&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+            </div>
+
+            <a class="location-btn"
+            href="https://maps.app.goo.gl/YourLocationLinkHere"
+            target="_blank">
+
+                VIEW ON MAPS
+
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+
+<audio loop id="music">
+    <source src="Wedding Nasheed  Muhammad Al Muqit (English Lyrics).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* OPEN ANIMATION & AUDIO */
+
+function openInvitation(){
+
+    document.querySelector('.envelope').classList.add('open');
+    
+    // Play the song upon interaction
+    const music = document.getElementById('music');
+    if(music) {
+        music.play().catch(e => console.log("Audio play failed:", e));
+    }
+
+    setTimeout(()=>{
+
+        document.getElementById('intro').style.opacity='0';
+        document.getElementById('intro').style.pointerEvents='none';
+
+        document.getElementById('mainContent').classList.add('show');
+
+    },1500);
+
+}
+
+/* COUNTDOWN */
+
+const weddingDate = new Date("June 7, 2026 09:00:00").getTime();
+
+const countdown = setInterval(()=>{
+
+    const now = new Date().getTime();
+
+    const distance = weddingDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('days').innerHTML = days;
+    document.getElementById('hours').innerHTML = hours;
+    document.getElementById('minutes').innerHTML = minutes;
+    document.getElementById('seconds').innerHTML = seconds;
+
+},1000);
+
+</script>
+
+</body>
+</html>
