@@ -498,7 +498,7 @@ MOBILE
             </div>
 
             <a class="location-btn"
-            href="https://maps.app.goo.gl/YourLocationLinkHere"
+            href="https://www.google.com/maps/search/?api=1&query=Grace+Convention+Center,+Nellaya"
             target="_blank">
 
                 VIEW ON MAPS
@@ -564,6 +564,21 @@ const countdown = setInterval(()=>{
     document.getElementById('seconds').innerHTML = seconds;
 
 },1000);
+
+/* STOP MUSIC WHEN USER LEAVES PAGE */
+document.addEventListener("visibilitychange", function() {
+    const music = document.getElementById('music');
+    const envelopeOpen = document.querySelector('.envelope').classList.contains('open');
+    
+    // Only pause/play if the envelope has already been opened
+    if (music && envelopeOpen) {
+        if (document.hidden) {
+            music.pause(); // Pause when tab is minimized or user goes to another app
+        } else {
+            music.play().catch(e => console.log("Audio play failed:", e)); // Resume when they come back
+        }
+    }
+});
 
 </script>
 
